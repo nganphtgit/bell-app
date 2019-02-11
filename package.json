@@ -1,0 +1,8 @@
+{
+    "name": "bell-app",
+    "version": "0.0.1",
+    "description": "bell for 2nd round of RTO",
+    "dependencies": {
+        "express": "^4.16.4"
+    }
+}
