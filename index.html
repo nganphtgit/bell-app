@@ -1,13 +1,47 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <title>FVC in my heart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
   </head>
   <body>
-    <form action="">
-      Username: <input type="text"/>
-      Password: <input type="password"/>
-    </form>
+    <div class="container">
+      <a href="#" class="btn btn-warning" id="btnStart">Start</a>
+      <a href="#" class="btn btn-danger bell">Player 1</a>
+      <h1 id="time" style="color:red;">?</h1>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function() {
+        var socket = io();
+        let intervalTime;
+        $('#btnStart').on('click', function(e) {
+          e.preventDefault();
+          let time = 10;
+          intervalTime = setInterval(function() {
+            socket.emit('count time', time);
+            time--;
+          }, 1000);
+          return;
+        });
+        socket.on('count time', function(msg) {
+          $('#time').text(msg);
+        });
+        socket.on('stop', function(msg) {
+          clearInterval(intervalTime);
+        });
+        $('.bell').on('click', function(e) {
+          e.preventDefault();
+          socket.emit('ring bell', $(this).html());
+          $(this).removeClass('btn-danger');
+          $(this).addClass('btn-success');
+          return false;
+        });
+        socket.on('chat message', function(msg) {
+          $('#messages').append($('<li>').text(msg));
+        });
+      });
+    </script>
   </body>
 </html>
