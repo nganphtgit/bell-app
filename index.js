@@ -1,7 +1,6 @@
-import express from 'exrpress';
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-
+const express= require('express');
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
