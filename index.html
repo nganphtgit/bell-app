@@ -2,46 +2,26 @@
 <html>
   <head>
     <title>FVC in my heart</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
   </head>
   <body>
     <div class="container">
-      <a href="#" class="btn btn-warning" id="btnStart">Start</a>
-      <a href="#" class="btn btn-danger bell">Player 1</a>
-      <h1 id="time" style="color:red;">?</h1>
+      <div class="login-area">
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-lg btn-secondary">Login</button>
+        </form>
+      </div>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      $(function() {
-        var socket = io();
-        let intervalTime;
-        $('#btnStart').on('click', function(e) {
-          e.preventDefault();
-          let time = 10;
-          intervalTime = setInterval(function() {
-            socket.emit('count time', time);
-            time--;
-          }, 1000);
-          return;
-        });
-        socket.on('count time', function(msg) {
-          $('#time').text(msg);
-        });
-        socket.on('stop', function(msg) {
-          clearInterval(intervalTime);
-        });
-        $('.bell').on('click', function(e) {
-          e.preventDefault();
-          socket.emit('ring bell', $(this).html());
-          $(this).removeClass('btn-danger');
-          $(this).addClass('btn-success');
-          return false;
-        });
-        socket.on('chat message', function(msg) {
-          $('#messages').append($('<li>').text(msg));
-        });
-      });
-    </script>
+    <script src="/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/socket.io.js"></script>
   </body>
 </html>
