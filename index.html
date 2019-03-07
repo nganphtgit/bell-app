@@ -2,13 +2,33 @@
 <html>
   <head>
     <title>FVC in my heart</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
   </head>
   <body>
     <div class="container">
+<<<<<<< HEAD
       
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+=======
+      <div class="login-area">
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-lg btn-secondary">Login</button>
+        </form>
+      </div>
+    </div>
+    <script src="/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/socket.io.js"></script>
+>>>>>>> rto
   </body>
 </html>
