@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const express= require('express');
-=======
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -17,7 +12,6 @@ let ablePlayer = [];
 let user;
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
->>>>>>> rto
 
 const con = mysql.createConnection({
     host: 'localhost',
